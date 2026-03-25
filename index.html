@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quy trình bán hàng - Van-sales & Pre-sales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-main: #f2f7f5;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --text-main: #162123;
+      --text-subtle: #4f6367;
+      --line-soft: #c8d6d2;
+      --accent-1: #0f766e;
+      --accent-2: #fb923c;
+      --accent-3: #1d4ed8;
+      --accent-4: #be123c;
+      --accent-5: #065f46;
+      --shadow: 0 18px 40px rgba(17, 45, 52, 0.14);
+      --radius-xl: 18px;
+      --radius-md: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Be Vietnam Pro", "Segoe UI", Tahoma, sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(15, 118, 110, 0.18), transparent 42%),
+        radial-gradient(circle at 90% 16%, rgba(251, 146, 60, 0.22), transparent 38%),
+        radial-gradient(circle at 50% 95%, rgba(29, 78, 216, 0.16), transparent 36%),
+        var(--bg-main);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 16px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, rgba(15, 118, 110, 0.94), rgba(6, 95, 70, 0.94));
+      border-radius: 22px;
+      padding: 28px 24px;
+      color: #effcf7;
+      box-shadow: var(--shadow);
+      animation: fade-slide-up 0.65s ease-out both;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Space Grotesk", "Be Vietnam Pro", sans-serif;
+      font-size: clamp(1.4rem, 1.1rem + 1.6vw, 2.3rem);
+      letter-spacing: 0.01em;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      max-width: 860px;
+      color: rgba(239, 252, 247, 0.92);
+      font-size: 0.98rem;
+    }
+
+    .sections {
+      margin-top: 22px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .process {
+      background: var(--bg-card);
+      border: 1px solid rgba(30, 60, 65, 0.13);
+      backdrop-filter: blur(3px);
+      border-radius: var(--radius-xl);
+      padding: 20px 16px 18px;
+      box-shadow: var(--shadow);
+      animation: fade-slide-up 0.65s ease-out both;
+    }
+
+    .process:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .process-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--line-soft);
+    }
+
+    .process h2 {
+      margin: 0;
+      font-family: "Space Grotesk", "Be Vietnam Pro", sans-serif;
+      font-size: clamp(1.1rem, 1rem + 0.8vw, 1.5rem);
+      color: #0a3a43;
+    }
+
+    .process .subtitle {
+      margin: 0;
+      font-size: 0.93rem;
+      color: var(--text-subtle);
+    }
+
+    .roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .role-chip {
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      box-shadow: 0 7px 16px rgba(20, 36, 40, 0.2);
+    }
+
+    .role-admin { background: #0f766e; }
+    .role-sales { background: #1d4ed8; }
+    .role-delivery { background: #be123c; }
+    .role-warehouse { background: #b45309; }
+
+    .flow-wrap {
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .flow {
+      list-style: none;
+      margin: 0;
+      padding: 4px;
+      min-width: 980px;
+      display: grid;
+      grid-template-columns: repeat(var(--steps), minmax(170px, 1fr));
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .step {
+      position: relative;
+      border-radius: var(--radius-md);
+      padding: 14px 12px 12px;
+      background: #fff;
+      border: 1px solid rgba(33, 54, 62, 0.14);
+      box-shadow: 0 10px 22px rgba(20, 35, 44, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.26s ease, box-shadow 0.26s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 24px rgba(20, 35, 44, 0.15);
+    }
+
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      width: 18px;
+      height: 2px;
+      background: #89a7aa;
+      transform: translateY(-50%);
+    }
+
+    .step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      right: -22px;
+      top: calc(50% - 4px);
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid #89a7aa;
+    }
+
+    .step-no {
+      width: fit-content;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #08314f;
+      background: linear-gradient(90deg, #bae6fd, #e0f2fe);
+      border: 1px solid #9cd4f5;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: 0.96rem;
+      line-height: 1.36;
+      min-height: 42px;
+    }
+
+    .role-label {
+      width: fit-content;
+      border-radius: 8px;
+      padding: 3px 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #fff;
+    }
+
+    .admin { background: #0f766e; }
+    .sales { background: #1d4ed8; }
+    .delivery { background: #be123c; }
+    .warehouse { background: #b45309; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 3px 8px;
+      border: 1px solid #d7e5e2;
+      background: #f8fcfb;
+      color: #33555a;
+      font-size: 0.74rem;
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: #4f6367;
+    }
+
+    .swimlane {
+      margin-top: 14px;
+      border: 1px solid #d3e1de;
+      border-radius: 14px;
+      background: #fbfefd;
+      overflow: hidden;
+    }
+
+    .swimlane-title {
+      margin: 0;
+      padding: 10px 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #194f57;
+      background: #eef8f5;
+      border-bottom: 1px solid #d3e1de;
+    }
+
+    .swimlane table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .swimlane th,
+    .swimlane td {
+      border: 1px solid #dbe7e4;
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .swimlane thead th {
+      background: #f1f8f6;
+      color: #204c52;
+      font-weight: 700;
+    }
+
+    .swimlane .role-col {
+      text-align: left;
+      font-weight: 700;
+      color: #204c52;
+      background: #f8fcfb;
+      min-width: 160px;
+    }
+
+    .mark {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #fff;
+      background: #0f766e;
+    }
+
+    .empty {
+      color: #9aacb0;
+      font-weight: 600;
+    }
+
+    .integration {
+      margin-top: 14px;
+      padding: 14px 12px;
+      border: 1px solid #d5e3e0;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f8fcfb, #f2f8f7);
+    }
+
+    .integration-title {
+      margin: 0 0 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #154d56;
+    }
+
+    .integration-graph {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) auto;
+      gap: 10px 20px;
+      align-items: center;
+    }
+
+    .node {
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(20, 35, 44, 0.08);
+    }
+
+    .node-source {
+      border-color: #93c5fd;
+      background: linear-gradient(180deg, #eff6ff, #e6f0ff);
+      color: #1e3a8a;
+    }
+
+    .system-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .system-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .arrow {
+      font-weight: 800;
+      color: #0f766e;
+      font-size: 0.92rem;
+    }
+
+    .node-system {
+      border-color: #f8d7aa;
+      background: linear-gradient(180deg, #fff9ef, #fff3df);
+      color: #92400e;
+      padding: 8px 10px;
+      min-width: 92px;
+      text-align: center;
+    }
+
+    .payment-visual {
+      margin-top: 12px;
+      border-top: 1px dashed #c7d8d4;
+      padding-top: 12px;
+    }
+
+    .payment-title {
+      margin: 0 0 10px;
+      font-size: 0.84rem;
+      color: #2d5960;
+      font-weight: 700;
+    }
+
+    .phone-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(170px, 1fr));
+      gap: 10px;
+    }
+
+    .phone {
+      border-radius: 12px;
+      border: 1px solid #d2e2de;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 8px 14px rgba(16, 33, 40, 0.08);
+    }
+
+    .phone.is-image {
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .phone-head {
+      padding: 7px 9px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #fff;
+      background: #e11d48;
+    }
+
+    .phone-body {
+      padding: 8px;
+      min-height: 128px;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      color: #415c62;
+      font-size: 0.73rem;
+      line-height: 1.35;
+    }
+
+    .phone-body.no-pad {
+      padding: 0;
+      min-height: 0;
+      background: #f8fafc;
+    }
+
+    .payment-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      aspect-ratio: 9 / 16;
+      background: #eef2f7;
+    }
+
+    .caption {
+      margin-top: 6px;
+      font-size: 0.71rem;
+      color: #59767b;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    @media (max-width: 992px) {
+      .flow {
+        min-width: 860px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 16px 12px 26px;
+      }
+
+      .hero,
+      .process {
+        border-radius: 16px;
+      }
+
+      .flow-wrap {
+        overflow-x: visible;
+      }
+
+      .flow {
+        min-width: 0;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .step {
+        min-height: 0;
+      }
+
+      .step h3 {
+        min-height: 0;
+      }
+
+      .step:not(:last-child)::after {
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -12px;
+        width: 2px;
+        height: 12px;
+        transform: translateX(-50%);
+      }
+
+      .step:not(:last-child)::before {
+        right: auto;
+        left: calc(50% - 4px);
+        top: auto;
+        bottom: -17px;
+        border-top: 6px solid #89a7aa;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 0;
+      }
+
+      .integration-graph {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .system-list {
+        gap: 6px;
+      }
+
+      .node-system {
+        min-width: 0;
+      }
+
+      .phone-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .swimlane {
+        overflow-x: auto;
+      }
+
+      .swimlane table {
+        min-width: 620px;
+      }
+    }
+
+    @keyframes fade-slide-up {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <h1>SƠ ĐỒ QUY TRÌNH BÁN HÀNG: VAN-SALES VÀ PRE-SALES</h1>
+      <p>
+        Trình bày theo luồng xử lý thực tế, gắn vai trò phụ trách tại từng bước,
+        giúp đội vận hành, kinh doanh và kho nhìn nhanh ai làm gì, khi nào, với điều kiện nào.
+      </p>
+    </section>
+
+    <div class="sections">
+      <section class="process">
+        <div class="process-head">
+          <h2>A. Quy trình bán hàng Van-sales</h2>
+          <p class="subtitle">Mô hình: Chuyển kho trước - lên đơn - giao và thu tiền - hoàn trả cuối ngày</p>
+        </div>
+
+        <div class="roles">
+          <span class="role-chip role-admin">Admin NPP</span>
+          <span class="role-chip role-sales">Nhân viên bán hàng</span>
+        </div>
+
+        <div class="flow-wrap">
+          <ol class="flow" style="--steps: 4;">
+            <li class="step">
+              <span class="step-no">Bước 1</span>
+              <span class="role-label admin">Admin NPP</span>
+              <h3>Chuyển kho sang kho VAN của nhân viên bán hàng</h3>
+              <div class="tags">
+                <span class="tag">Kho VAN</span>
+                <span class="tag">Cấp tồn trước bán</span>
+              </div>
+            </li>
+
+            <li class="step">
+              <span class="step-no">Bước 2</span>
+              <span class="role-label sales">Nhân viên bán hàng</span>
+              <h3>Nhập đơn hàng trên eSales SFA</h3>
+              <div class="tags">
+                <span class="tag">eSales SFA</span>
+                <span class="tag">Lên đơn tại điểm bán</span>
+              </div>
+            </li>
+
+            <li class="step">
+              <span class="step-no">Bước 3</span>
+              <span class="role-label sales">Nhân viên bán hàng</span>
+              <h3>
+                Giao hàng và thu tiền; chỉnh sửa số lượng và tính khuyến mãi; in bill trực tiếp từ máy in;
+                ra hóa đơn (tích hợp SAP, VNPT); thu tiền trực tiếp hoặc quét QR chuyển khoản
+              </h3>
+              <div class="tags">
+                <span class="tag">SAP</span>
+                <span class="tag">VNPT</span>
+                <span class="tag">In bill</span>
+                <span class="tag">QR Code</span>
+              </div>
+            </li>
+
+            <li class="step">
+              <span class="step-no">Bước 4</span>
+              <span class="role-label sales">Nhân viên bán hàng</span>
+              <h3>Cuối ngày hoàn trả hàng dư không bán được</h3>
+              <div class="tags">
+                <span class="tag">Đối soát cuối ngày</span>
+                <span class="tag">Nhập trả</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="swimlane">
+          <p class="swimlane-title">Ma trận vai trò theo từng bước (Van-sales)</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Vai trò</th>
+                <th>Bước 1</th>
+                <th>Bước 2</th>
+                <th>Bước 3</th>
+                <th>Bước 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="role-col">Admin NPP</td>
+                <td><span class="mark">Thực hiện</span></td>
+                <td><span class="empty">-</span></td>
+                <td><span class="empty">-</span></td>
+                <td><span class="empty">-</span></td>
+              </tr>
+              <tr>
+                <td class="role-col">Nhân viên bán hàng</td>
+                <td><span class="empty">-</span></td>
+                <td><span class="mark">Thực hiện</span></td>
+                <td><span class="mark">Thực hiện</span></td>
+                <td><span class="mark">Thực hiện</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="integration">
+          <p class="integration-title">Kết nối hệ thống ở Bước 3</p>
+          <div class="integration-graph">
+            <div class="node node-source">Bước 3 - Nhân viên bán hàng thực hiện giao hàng và thu tiền</div>
+            <div class="system-list">
+              <span class="system-item">
+                <span class="arrow">→</span>
+                <span class="node node-system">SAP</span>
+              </span>
+              <span class="system-item">
+                <span class="arrow">→</span>
+                <span class="node node-system">VNPT</span>
+              </span>
+              <span class="system-item">
+                <span class="arrow">→</span>
+                <span class="node node-system">App Banking</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="payment-visual">
+            <p class="payment-title">Hình ảnh minh họa bước thu tiền và xác nhận chuyển khoản QR</p>
+            <div class="phone-flow">
+              <article class="phone is-image">
+                <div class="phone-head">Màn hình lộ nghiệp / danh sách đơn</div>
+                <div class="phone-body no-pad">
+                  <img class="payment-img" src="assets/thu-tien-danh-sach-don.png" alt="Màn hình danh sách đơn hàng và thao tác QR nộp tiền" />
+                </div>
+              </article>
+              <article class="phone is-image">
+                <div class="phone-head">Màn hình QR nộp tiền</div>
+                <div class="phone-body no-pad">
+                  <img class="payment-img" src="assets/thu-tien-qr-nop-tien.png" alt="Màn hình QR nộp tiền để khách quét chuyển khoản" />
+                </div>
+              </article>
+              <article class="phone is-image">
+                <div class="phone-head">Màn hình App Banking</div>
+                <div class="phone-body no-pad">
+                  <img class="payment-img" src="assets/thu-tien-app-banking.png" alt="Màn hình ứng dụng ngân hàng xác nhận thông tin chuyển tiền" />
+                </div>
+              </article>
+            </div>
+            <p class="caption">Chuỗi thao tác: Chọn đơn cần thu tiền -> hiển thị QR nộp tiền -> khách xác nhận trên App Banking.</p>
+          </div>
+        </div>
+
+        <p class="footer-note">
+          Kết quả: Đảm bảo luồng Van-sales linh hoạt tại thị trường, đồng bộ tồn kho và thanh toán theo thời gian gần thực.
+        </p>
+      </section>
+
+      <section class="process">
+        <div class="process-head">
+          <h2>B. Quy trình bán hàng Pre-sales</h2>
+          <p class="subtitle">Mô hình: Tạo đơn - duyệt đơn và xuất chứng từ - giao hàng thu tiền - hoàn trả cuối ngày</p>
+        </div>
+
+        <div class="roles">
+          <span class="role-chip role-sales">Nhân viên bán hàng</span>
+          <span class="role-chip role-admin">Admin NPP</span>
+          <span class="role-chip role-warehouse">Thủ kho</span>
+          <span class="role-chip role-delivery">Giao hàng</span>
+        </div>
+
+        <div class="flow-wrap">
+          <ol class="flow" style="--steps: 4;">
+            <li class="step">
+              <span class="step-no">Bước 1</span>
+              <span class="role-label sales">Nhân viên bán hàng</span>
+              <h3>Nhập đơn hàng trên eSales SFA</h3>
+              <div class="tags">
+                <span class="tag">eSales SFA</span>
+                <span class="tag">Khởi tạo đơn</span>
+              </div>
+            </li>
+
+            <li class="step">
+              <span class="step-no">Bước 2</span>
+              <span class="role-label admin">Admin NPP</span>
+              <h3>Xác nhận đơn hàng, in phiếu giao hàng, in phiếu xuất kho; Thủ kho xuất hàng cho nhân viên giao hàng</h3>
+              <div class="tags">
+                <span class="tag">Duyệt đơn</span>
+                <span class="tag">Chứng từ kho</span>
+                <span class="tag">Xuất hàng</span>
+              </div>
+            </li>
+
+            <li class="step">
+              <span class="step-no">Bước 3</span>
+              <span class="role-label delivery">Giao hàng</span>
+              <h3>
+                Giao hàng và thu tiền; chỉnh sửa số lượng và tính khuyến mãi; in bill trực tiếp từ máy in;
+                ra hóa đơn (tích hợp SAP, VNPT); thu tiền trực tiếp hoặc quét QR chuyển khoản
+              </h3>
+              <div class="tags">
+                <span class="tag">SAP</span>
+                <span class="tag">VNPT</span>
+                <span class="tag">In bill</span>
+                <span class="tag">QR Code</span>
+              </div>
+            </li>
+
+            <li class="step">
+              <span class="step-no">Bước 4</span>
+              <span class="role-label delivery">Giao hàng</span>
+              <h3>Cuối ngày hoàn trả hàng dư không bán được</h3>
+              <div class="tags">
+                <span class="tag">Đối soát cuối ngày</span>
+                <span class="tag">Trả hàng tồn</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="swimlane">
+          <p class="swimlane-title">Ma trận vai trò theo từng bước (Pre-sales)</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Vai trò</th>
+                <th>Bước 1</th>
+                <th>Bước 2</th>
+                <th>Bước 3</th>
+                <th>Bước 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="role-col">Nhân viên bán hàng</td>
+                <td><span class="mark">Thực hiện</span></td>
+                <td><span class="empty">-</span></td>
+                <td><span class="empty">-</span></td>
+                <td><span class="empty">-</span></td>
+              </tr>
+              <tr>
+                <td class="role-col">Admin NPP</td>
+                <td><span class="empty">-</span></td>
+                <td><span class="mark">Thực hiện</span></td>
+                <td><span class="empty">-</span></td>
+                <td><span class="empty">-</span></td>
+              </tr>
+              <tr>
+                <td class="role-col">Thủ kho</td>
+                <td><span class="empty">-</span></td>
+                <td><span class="mark">Phối hợp xuất hàng</span></td>
+                <td><span class="empty">-</span></td>
+                <td><span class="empty">-</span></td>
+              </tr>
+              <tr>
+                <td class="role-col">Giao hàng</td>
+                <td><span class="empty">-</span></td>
+                <td><span class="empty">-</span></td>
+                <td><span class="mark">Thực hiện</span></td>
+                <td><span class="mark">Thực hiện</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="integration">
+          <p class="integration-title">Kết nối hệ thống ở Bước 3</p>
+          <div class="integration-graph">
+            <div class="node node-source">Bước 3 - Giao hàng thực hiện giao và thu tiền</div>
+            <div class="system-list">
+              <span class="system-item">
+                <span class="arrow">→</span>
+                <span class="node node-system">SAP</span>
+              </span>
+              <span class="system-item">
+                <span class="arrow">→</span>
+                <span class="node node-system">VNPT</span>
+              </span>
+              <span class="system-item">
+                <span class="arrow">→</span>
+                <span class="node node-system">App Banking</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="payment-visual">
+            <p class="payment-title">Hình ảnh minh họa bước thu tiền và xác nhận chuyển khoản QR</p>
+            <div class="phone-flow">
+              <article class="phone is-image">
+                <div class="phone-head">Màn hình lộ nghiệp / danh sách đơn</div>
+                <div class="phone-body no-pad">
+                  <img class="payment-img" src="assets/thu-tien-danh-sach-don.png" alt="Màn hình danh sách đơn hàng và thao tác QR nộp tiền" />
+                </div>
+              </article>
+              <article class="phone is-image">
+                <div class="phone-head">Màn hình QR nộp tiền</div>
+                <div class="phone-body no-pad">
+                  <img class="payment-img" src="assets/thu-tien-qr-nop-tien.png" alt="Màn hình QR nộp tiền để khách quét chuyển khoản" />
+                </div>
+              </article>
+              <article class="phone is-image">
+                <div class="phone-head">Màn hình App Banking</div>
+                <div class="phone-body no-pad">
+                  <img class="payment-img" src="assets/thu-tien-app-banking.png" alt="Màn hình ứng dụng ngân hàng xác nhận thông tin chuyển tiền" />
+                </div>
+              </article>
+            </div>
+            <p class="caption">Chuỗi thao tác: Chọn đơn cần thu tiền -> hiển thị QR nộp tiền -> khách xác nhận trên App Banking.</p>
+          </div>
+        </div>
+
+        <p class="footer-note">
+          Kết quả: Luồng Pre-sales rõ ràng theo vai trò duyệt đơn - kho - giao hàng, tối ưu chứng từ và thu tiền tại điểm bán.
+        </p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
