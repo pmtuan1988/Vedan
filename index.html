@@ -689,26 +689,104 @@
           <div class="payment-visual">
             <p class="payment-title">Hình ảnh minh họa bước thu tiền và xác nhận chuyển khoản QR</p>
             <div class="phone-flow">
-              <article class="phone is-image">
-                <div class="phone-head">Màn hình lộ nghiệp / danh sách đơn</div>
-                <div class="phone-body no-pad">
-                  <img class="payment-img" src="assets/thu-tien-danh-sach-don.png" alt="Màn hình danh sách đơn hàng và thao tác QR nộp tiền" />
-                </div>
-              </article>
-              <article class="phone is-image">
-                <div class="phone-head">Màn hình QR nộp tiền</div>
-                <div class="phone-body no-pad">
-                  <img class="payment-img" src="assets/thu-tien-qr-nop-tien.png" alt="Màn hình QR nộp tiền để khách quét chuyển khoản" />
-                </div>
-              </article>
-              <article class="phone is-image">
-                <div class="phone-head">Màn hình App Banking</div>
-                <div class="phone-body no-pad">
-                  <img class="payment-img" src="assets/thu-tien-app-banking.png" alt="Màn hình ứng dụng ngân hàng xác nhận thông tin chuyển tiền" />
-                </div>
-              </article>
-            </div>
-            <p class="caption">Chuỗi thao tác: Chọn đơn cần thu tiền -> hiển thị QR nộp tiền -> khách xác nhận trên App Banking.</p>
+                <article class="phone">
+                  <div class="phone-head">① eSales SFA – Thu tiền đơn hàng</div>
+                  <div class="phone-body app-order">
+                    <div class="ao-cust">
+                      <div class="ao-name">Cửa hàng Minh Hoàng</div>
+                      <div class="ao-addr">📍 Q.7, TP.HCM · DH20250325001</div>
+                    </div>
+                    <div class="ao-items">
+                      <div class="ao-row"><span>Mì gói Vedan (thùng)</span><span>x5</span><span>450.000</span></div>
+                      <div class="ao-row"><span>Nước tương Vedan 1L</span><span>x12</span><span>360.000</span></div>
+                      <div class="ao-row"><span>Sữa đậu nành Vedan</span><span>x6</span><span>180.000</span></div>
+                    </div>
+                    <div class="ao-promo">Khuyến mãi <span>– 90.000 đ</span></div>
+                    <div class="ao-total">Tổng thanh toán <span>900.000 đ</span></div>
+                    <button class="ao-btn">📲 Tạo QR / Thu tiền</button>
+                  </div>
+                </article>
+                <article class="phone">
+                  <div class="phone-head phone-head-qr">② VietQR – Quét mã thanh toán</div>
+                  <div class="phone-body app-qr">
+                    <div class="aq-header">
+                      <span class="aq-vietqr">VietQR</span>
+                      <span class="aq-bank">VPBank</span>
+                    </div>
+                    <div class="aq-qr-wrap">
+                      <svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" class="aq-svg">
+                        <rect width="27" height="27" fill="#fff"/>
+                        <rect x="1" y="1" width="7" height="7" fill="#111"/><rect x="2" y="2" width="5" height="5" fill="#fff"/><rect x="3" y="3" width="3" height="3" fill="#111"/>
+                        <rect x="19" y="1" width="7" height="7" fill="#111"/><rect x="20" y="2" width="5" height="5" fill="#fff"/><rect x="21" y="3" width="3" height="3" fill="#111"/>
+                        <rect x="1" y="19" width="7" height="7" fill="#111"/><rect x="2" y="20" width="5" height="5" fill="#fff"/><rect x="3" y="21" width="3" height="3" fill="#111"/>
+                        <rect x="8" y="6" width="1" height="1" fill="#111"/><rect x="10" y="6" width="1" height="1" fill="#111"/><rect x="12" y="6" width="1" height="1" fill="#111"/><rect x="14" y="6" width="1" height="1" fill="#111"/><rect x="16" y="6" width="1" height="1" fill="#111"/><rect x="18" y="6" width="1" height="1" fill="#111"/>
+                        <rect x="6" y="8" width="1" height="1" fill="#111"/><rect x="6" y="10" width="1" height="1" fill="#111"/><rect x="6" y="12" width="1" height="1" fill="#111"/><rect x="6" y="14" width="1" height="1" fill="#111"/><rect x="6" y="16" width="1" height="1" fill="#111"/><rect x="6" y="18" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="8" width="1" height="1" fill="#111"/><rect x="9" y="9" width="1" height="1" fill="#111"/><rect x="11" y="8" width="1" height="1" fill="#111"/><rect x="10" y="10" width="1" height="1" fill="#111"/><rect x="12" y="9" width="1" height="1" fill="#111"/><rect x="13" y="8" width="1" height="1" fill="#111"/>
+                        <rect x="14" y="10" width="1" height="1" fill="#111"/><rect x="15" y="9" width="1" height="1" fill="#111"/><rect x="17" y="8" width="1" height="1" fill="#111"/><rect x="18" y="10" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="11" width="1" height="1" fill="#111"/><rect x="10" y="12" width="1" height="1" fill="#111"/><rect x="11" y="11" width="1" height="1" fill="#111"/><rect x="13" y="12" width="1" height="1" fill="#111"/>
+                        <rect x="14" y="11" width="1" height="1" fill="#111"/><rect x="16" y="12" width="1" height="1" fill="#111"/><rect x="18" y="11" width="1" height="1" fill="#111"/>
+                        <rect x="9" y="13" width="1" height="1" fill="#111"/><rect x="12" y="13" width="1" height="1" fill="#111"/><rect x="15" y="14" width="1" height="1" fill="#111"/><rect x="17" y="13" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="14" width="1" height="1" fill="#111"/><rect x="10" y="15" width="1" height="1" fill="#111"/><rect x="13" y="15" width="1" height="1" fill="#111"/><rect x="16" y="14" width="1" height="1" fill="#111"/><rect x="18" y="15" width="1" height="1" fill="#111"/>
+                        <rect x="9" y="16" width="1" height="1" fill="#111"/><rect x="11" y="17" width="1" height="1" fill="#111"/><rect x="14" y="16" width="1" height="1" fill="#111"/><rect x="16" y="17" width="1" height="1" fill="#111"/><rect x="18" y="16" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="18" width="1" height="1" fill="#111"/><rect x="10" y="18" width="1" height="1" fill="#111"/><rect x="12" y="18" width="1" height="1" fill="#111"/><rect x="15" y="18" width="1" height="1" fill="#111"/><rect x="17" y="18" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="8" width="1" height="1" fill="#111"/><rect x="21" y="9" width="1" height="1" fill="#111"/><rect x="23" y="8" width="1" height="1" fill="#111"/><rect x="25" y="9" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="10" width="1" height="1" fill="#111"/><rect x="22" y="11" width="1" height="1" fill="#111"/><rect x="24" y="10" width="1" height="1" fill="#111"/><rect x="21" y="12" width="1" height="1" fill="#111"/>
+                        <rect x="23" y="11" width="1" height="1" fill="#111"/><rect x="25" y="12" width="1" height="1" fill="#111"/><rect x="20" y="13" width="1" height="1" fill="#111"/><rect x="22" y="14" width="1" height="1" fill="#111"/>
+                        <rect x="24" y="13" width="1" height="1" fill="#111"/><rect x="21" y="15" width="1" height="1" fill="#111"/><rect x="23" y="14" width="1" height="1" fill="#111"/><rect x="25" y="15" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="16" width="1" height="1" fill="#111"/><rect x="22" y="17" width="1" height="1" fill="#111"/><rect x="24" y="16" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="18" width="1" height="1" fill="#111"/><rect x="23" y="18" width="1" height="1" fill="#111"/><rect x="25" y="17" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="20" width="1" height="1" fill="#111"/><rect x="10" y="21" width="1" height="1" fill="#111"/><rect x="9" y="22" width="1" height="1" fill="#111"/>
+                        <rect x="11" y="20" width="1" height="1" fill="#111"/><rect x="13" y="21" width="1" height="1" fill="#111"/><rect x="14" y="20" width="1" height="1" fill="#111"/>
+                        <rect x="12" y="22" width="1" height="1" fill="#111"/><rect x="15" y="21" width="1" height="1" fill="#111"/><rect x="16" y="22" width="1" height="1" fill="#111"/>
+                        <rect x="17" y="20" width="1" height="1" fill="#111"/><rect x="18" y="21" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="20" width="1" height="1" fill="#111"/><rect x="21" y="21" width="1" height="1" fill="#111"/><rect x="22" y="20" width="1" height="1" fill="#111"/>
+                        <rect x="24" y="21" width="1" height="1" fill="#111"/><rect x="25" y="20" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="22" width="1" height="1" fill="#111"/><rect x="23" y="22" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="23" width="1" height="1" fill="#111"/><rect x="11" y="24" width="1" height="1" fill="#111"/><rect x="13" y="23" width="1" height="1" fill="#111"/>
+                        <rect x="15" y="24" width="1" height="1" fill="#111"/><rect x="17" y="23" width="1" height="1" fill="#111"/><rect x="18" y="24" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="23" width="1" height="1" fill="#111"/><rect x="22" y="24" width="1" height="1" fill="#111"/><rect x="24" y="23" width="1" height="1" fill="#111"/>
+                        <rect x="9" y="25" width="1" height="1" fill="#111"/><rect x="12" y="25" width="1" height="1" fill="#111"/><rect x="14" y="25" width="1" height="1" fill="#111"/>
+                        <rect x="16" y="25" width="1" height="1" fill="#111"/><rect x="19" y="25" width="1" height="1" fill="#111"/><rect x="21" y="25" width="1" height="1" fill="#111"/>
+                        <rect x="23" y="25" width="1" height="1" fill="#111"/><rect x="25" y="25" width="1" height="1" fill="#111"/>
+                      </svg>
+                    </div>
+                    <div class="aq-amount">900.000 đ</div>
+                    <div class="aq-info">
+                      <div class="aq-irow"><span>Tên TK</span><span>CTY VEDAN VN</span></div>
+                      <div class="aq-irow"><span>Ngân hàng</span><span>VPBank</span></div>
+                      <div class="aq-irow"><span>Nội dung</span><span>DH20250325001</span></div>
+                    </div>
+                    <div class="aq-hint">Mở App Banking → Chuyển tiền → Quét QR</div>
+                  </div>
+                </article>
+                <article class="phone">
+                  <div class="phone-head phone-head-bank">③ App Banking – Xác nhận CK</div>
+                  <div class="phone-body app-bank">
+                    <div class="ab-section">
+                      <div class="ab-lbl">Người nhận</div>
+                      <div class="ab-val fw7">CTY VEDAN VIET NAM</div>
+                      <div class="ab-val sub">VPBank · 081704030xxxxx</div>
+                    </div>
+                    <div class="ab-divider"></div>
+                    <div class="ab-section">
+                      <div class="ab-lbl">Số tiền chuyển</div>
+                      <div class="ab-val red">900.000 đ</div>
+                    </div>
+                    <div class="ab-section">
+                      <div class="ab-lbl">Nội dung chuyển</div>
+                      <div class="ab-val">DH20250325001</div>
+                    </div>
+                    <div class="ab-section">
+                      <div class="ab-lbl">Phí giao dịch</div>
+                      <div class="ab-val grn">Miễn phí</div>
+                    </div>
+                    <div class="ab-divider"></div>
+                    <button class="ab-btn">XÁC NHẬN CHUYỂN KHOẢN</button>
+                    <div class="ab-secure">🔒 Giao dịch được mã hóa SSL 256-bit</div>
+                  </div>
+                </article>
+              </div>
+              <p class="caption">Chuỗi thao tác: Chọn đơn cần thu tiền → Hiển thị QR nộp tiền → Khách xác nhận trên App Banking → Hệ thống đồng bộ SAP.</p>
           </div>
         </div>
 
@@ -848,26 +926,104 @@
           <div class="payment-visual">
             <p class="payment-title">Hình ảnh minh họa bước thu tiền và xác nhận chuyển khoản QR</p>
             <div class="phone-flow">
-              <article class="phone is-image">
-                <div class="phone-head">Màn hình lộ nghiệp / danh sách đơn</div>
-                <div class="phone-body no-pad">
-                  <img class="payment-img" src="assets/thu-tien-danh-sach-don.png" alt="Màn hình danh sách đơn hàng và thao tác QR nộp tiền" />
-                </div>
-              </article>
-              <article class="phone is-image">
-                <div class="phone-head">Màn hình QR nộp tiền</div>
-                <div class="phone-body no-pad">
-                  <img class="payment-img" src="assets/thu-tien-qr-nop-tien.png" alt="Màn hình QR nộp tiền để khách quét chuyển khoản" />
-                </div>
-              </article>
-              <article class="phone is-image">
-                <div class="phone-head">Màn hình App Banking</div>
-                <div class="phone-body no-pad">
-                  <img class="payment-img" src="assets/thu-tien-app-banking.png" alt="Màn hình ứng dụng ngân hàng xác nhận thông tin chuyển tiền" />
-                </div>
-              </article>
-            </div>
-            <p class="caption">Chuỗi thao tác: Chọn đơn cần thu tiền -> hiển thị QR nộp tiền -> khách xác nhận trên App Banking.</p>
+                <article class="phone">
+                  <div class="phone-head">① eSales SFA – Thu tiền đơn hàng</div>
+                  <div class="phone-body app-order">
+                    <div class="ao-cust">
+                      <div class="ao-name">Cửa hàng Minh Hoàng</div>
+                      <div class="ao-addr">📍 Q.7, TP.HCM · DH20250325001</div>
+                    </div>
+                    <div class="ao-items">
+                      <div class="ao-row"><span>Mì gói Vedan (thùng)</span><span>x5</span><span>450.000</span></div>
+                      <div class="ao-row"><span>Nước tương Vedan 1L</span><span>x12</span><span>360.000</span></div>
+                      <div class="ao-row"><span>Sữa đậu nành Vedan</span><span>x6</span><span>180.000</span></div>
+                    </div>
+                    <div class="ao-promo">Khuyến mãi <span>– 90.000 đ</span></div>
+                    <div class="ao-total">Tổng thanh toán <span>900.000 đ</span></div>
+                    <button class="ao-btn">📲 Tạo QR / Thu tiền</button>
+                  </div>
+                </article>
+                <article class="phone">
+                  <div class="phone-head phone-head-qr">② VietQR – Quét mã thanh toán</div>
+                  <div class="phone-body app-qr">
+                    <div class="aq-header">
+                      <span class="aq-vietqr">VietQR</span>
+                      <span class="aq-bank">VPBank</span>
+                    </div>
+                    <div class="aq-qr-wrap">
+                      <svg viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg" class="aq-svg">
+                        <rect width="27" height="27" fill="#fff"/>
+                        <rect x="1" y="1" width="7" height="7" fill="#111"/><rect x="2" y="2" width="5" height="5" fill="#fff"/><rect x="3" y="3" width="3" height="3" fill="#111"/>
+                        <rect x="19" y="1" width="7" height="7" fill="#111"/><rect x="20" y="2" width="5" height="5" fill="#fff"/><rect x="21" y="3" width="3" height="3" fill="#111"/>
+                        <rect x="1" y="19" width="7" height="7" fill="#111"/><rect x="2" y="20" width="5" height="5" fill="#fff"/><rect x="3" y="21" width="3" height="3" fill="#111"/>
+                        <rect x="8" y="6" width="1" height="1" fill="#111"/><rect x="10" y="6" width="1" height="1" fill="#111"/><rect x="12" y="6" width="1" height="1" fill="#111"/><rect x="14" y="6" width="1" height="1" fill="#111"/><rect x="16" y="6" width="1" height="1" fill="#111"/><rect x="18" y="6" width="1" height="1" fill="#111"/>
+                        <rect x="6" y="8" width="1" height="1" fill="#111"/><rect x="6" y="10" width="1" height="1" fill="#111"/><rect x="6" y="12" width="1" height="1" fill="#111"/><rect x="6" y="14" width="1" height="1" fill="#111"/><rect x="6" y="16" width="1" height="1" fill="#111"/><rect x="6" y="18" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="8" width="1" height="1" fill="#111"/><rect x="9" y="9" width="1" height="1" fill="#111"/><rect x="11" y="8" width="1" height="1" fill="#111"/><rect x="10" y="10" width="1" height="1" fill="#111"/><rect x="12" y="9" width="1" height="1" fill="#111"/><rect x="13" y="8" width="1" height="1" fill="#111"/>
+                        <rect x="14" y="10" width="1" height="1" fill="#111"/><rect x="15" y="9" width="1" height="1" fill="#111"/><rect x="17" y="8" width="1" height="1" fill="#111"/><rect x="18" y="10" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="11" width="1" height="1" fill="#111"/><rect x="10" y="12" width="1" height="1" fill="#111"/><rect x="11" y="11" width="1" height="1" fill="#111"/><rect x="13" y="12" width="1" height="1" fill="#111"/>
+                        <rect x="14" y="11" width="1" height="1" fill="#111"/><rect x="16" y="12" width="1" height="1" fill="#111"/><rect x="18" y="11" width="1" height="1" fill="#111"/>
+                        <rect x="9" y="13" width="1" height="1" fill="#111"/><rect x="12" y="13" width="1" height="1" fill="#111"/><rect x="15" y="14" width="1" height="1" fill="#111"/><rect x="17" y="13" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="14" width="1" height="1" fill="#111"/><rect x="10" y="15" width="1" height="1" fill="#111"/><rect x="13" y="15" width="1" height="1" fill="#111"/><rect x="16" y="14" width="1" height="1" fill="#111"/><rect x="18" y="15" width="1" height="1" fill="#111"/>
+                        <rect x="9" y="16" width="1" height="1" fill="#111"/><rect x="11" y="17" width="1" height="1" fill="#111"/><rect x="14" y="16" width="1" height="1" fill="#111"/><rect x="16" y="17" width="1" height="1" fill="#111"/><rect x="18" y="16" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="18" width="1" height="1" fill="#111"/><rect x="10" y="18" width="1" height="1" fill="#111"/><rect x="12" y="18" width="1" height="1" fill="#111"/><rect x="15" y="18" width="1" height="1" fill="#111"/><rect x="17" y="18" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="8" width="1" height="1" fill="#111"/><rect x="21" y="9" width="1" height="1" fill="#111"/><rect x="23" y="8" width="1" height="1" fill="#111"/><rect x="25" y="9" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="10" width="1" height="1" fill="#111"/><rect x="22" y="11" width="1" height="1" fill="#111"/><rect x="24" y="10" width="1" height="1" fill="#111"/><rect x="21" y="12" width="1" height="1" fill="#111"/>
+                        <rect x="23" y="11" width="1" height="1" fill="#111"/><rect x="25" y="12" width="1" height="1" fill="#111"/><rect x="20" y="13" width="1" height="1" fill="#111"/><rect x="22" y="14" width="1" height="1" fill="#111"/>
+                        <rect x="24" y="13" width="1" height="1" fill="#111"/><rect x="21" y="15" width="1" height="1" fill="#111"/><rect x="23" y="14" width="1" height="1" fill="#111"/><rect x="25" y="15" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="16" width="1" height="1" fill="#111"/><rect x="22" y="17" width="1" height="1" fill="#111"/><rect x="24" y="16" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="18" width="1" height="1" fill="#111"/><rect x="23" y="18" width="1" height="1" fill="#111"/><rect x="25" y="17" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="20" width="1" height="1" fill="#111"/><rect x="10" y="21" width="1" height="1" fill="#111"/><rect x="9" y="22" width="1" height="1" fill="#111"/>
+                        <rect x="11" y="20" width="1" height="1" fill="#111"/><rect x="13" y="21" width="1" height="1" fill="#111"/><rect x="14" y="20" width="1" height="1" fill="#111"/>
+                        <rect x="12" y="22" width="1" height="1" fill="#111"/><rect x="15" y="21" width="1" height="1" fill="#111"/><rect x="16" y="22" width="1" height="1" fill="#111"/>
+                        <rect x="17" y="20" width="1" height="1" fill="#111"/><rect x="18" y="21" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="20" width="1" height="1" fill="#111"/><rect x="21" y="21" width="1" height="1" fill="#111"/><rect x="22" y="20" width="1" height="1" fill="#111"/>
+                        <rect x="24" y="21" width="1" height="1" fill="#111"/><rect x="25" y="20" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="22" width="1" height="1" fill="#111"/><rect x="23" y="22" width="1" height="1" fill="#111"/>
+                        <rect x="8" y="23" width="1" height="1" fill="#111"/><rect x="11" y="24" width="1" height="1" fill="#111"/><rect x="13" y="23" width="1" height="1" fill="#111"/>
+                        <rect x="15" y="24" width="1" height="1" fill="#111"/><rect x="17" y="23" width="1" height="1" fill="#111"/><rect x="18" y="24" width="1" height="1" fill="#111"/>
+                        <rect x="20" y="23" width="1" height="1" fill="#111"/><rect x="22" y="24" width="1" height="1" fill="#111"/><rect x="24" y="23" width="1" height="1" fill="#111"/>
+                        <rect x="9" y="25" width="1" height="1" fill="#111"/><rect x="12" y="25" width="1" height="1" fill="#111"/><rect x="14" y="25" width="1" height="1" fill="#111"/>
+                        <rect x="16" y="25" width="1" height="1" fill="#111"/><rect x="19" y="25" width="1" height="1" fill="#111"/><rect x="21" y="25" width="1" height="1" fill="#111"/>
+                        <rect x="23" y="25" width="1" height="1" fill="#111"/><rect x="25" y="25" width="1" height="1" fill="#111"/>
+                      </svg>
+                    </div>
+                    <div class="aq-amount">900.000 đ</div>
+                    <div class="aq-info">
+                      <div class="aq-irow"><span>Tên TK</span><span>CTY VEDAN VN</span></div>
+                      <div class="aq-irow"><span>Ngân hàng</span><span>VPBank</span></div>
+                      <div class="aq-irow"><span>Nội dung</span><span>DH20250325001</span></div>
+                    </div>
+                    <div class="aq-hint">Mở App Banking → Chuyển tiền → Quét QR</div>
+                  </div>
+                </article>
+                <article class="phone">
+                  <div class="phone-head phone-head-bank">③ App Banking – Xác nhận CK</div>
+                  <div class="phone-body app-bank">
+                    <div class="ab-section">
+                      <div class="ab-lbl">Người nhận</div>
+                      <div class="ab-val fw7">CTY VEDAN VIET NAM</div>
+                      <div class="ab-val sub">VPBank · 081704030xxxxx</div>
+                    </div>
+                    <div class="ab-divider"></div>
+                    <div class="ab-section">
+                      <div class="ab-lbl">Số tiền chuyển</div>
+                      <div class="ab-val red">900.000 đ</div>
+                    </div>
+                    <div class="ab-section">
+                      <div class="ab-lbl">Nội dung chuyển</div>
+                      <div class="ab-val">DH20250325001</div>
+                    </div>
+                    <div class="ab-section">
+                      <div class="ab-lbl">Phí giao dịch</div>
+                      <div class="ab-val grn">Miễn phí</div>
+                    </div>
+                    <div class="ab-divider"></div>
+                    <button class="ab-btn">XÁC NHẬN CHUYỂN KHOẢN</button>
+                    <div class="ab-secure">🔒 Giao dịch được mã hóa SSL 256-bit</div>
+                  </div>
+                </article>
+              </div>
+              <p class="caption">Chuỗi thao tác: Chọn đơn cần thu tiền → Hiển thị QR nộp tiền → Khách xác nhận trên App Banking → Hệ thống đồng bộ SAP.</p>
           </div>
         </div>
 
