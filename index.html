@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -403,11 +403,6 @@
       box-shadow: 0 8px 14px rgba(16, 33, 40, 0.08);
     }
 
-    .phone.is-image {
-      display: grid;
-      grid-template-rows: auto 1fr;
-    }
-
     .phone-head {
       padding: 7px 9px;
       font-size: 0.74rem;
@@ -423,22 +418,6 @@
       color: #415c62;
       font-size: 0.73rem;
       line-height: 1.35;
-    }
-
-    .phone-body.no-pad {
-      padding: 0;
-      min-height: 0;
-      background: #f8fafc;
-    }
-
-    .payment-img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      aspect-ratio: 9 / 16;
-      background: #eef2f7;
     }
 
     .caption {
@@ -540,6 +519,49 @@
         transform: translateY(0);
       }
     }
+
+    /* â”€â”€ App mobile screen CSS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    .phone-head-qr   { background: linear-gradient(90deg,#0284c7,#0369a1) !important; }
+    .phone-head-bank { background: linear-gradient(90deg,#1d4ed8,#2563eb) !important; }
+
+    .app-order, .app-qr, .app-bank { padding: 10px; }
+
+    /* Screen 1 â€“ order list */
+    .ao-cust { margin-bottom:7px; padding-bottom:7px; border-bottom:1px solid #eef2f0; }
+    .ao-name { font-weight:700; font-size:0.84rem; color:#1a2e31; }
+    .ao-addr { font-size:0.71rem; color:#6b8489; margin-top:2px; }
+    .ao-items { margin:5px 0; }
+    .ao-row  { display:grid; grid-template-columns:1fr 28px 62px; gap:4px; font-size:0.74rem; color:#2c4a50; padding:4px 0; border-bottom:1px dashed #e8f0ee; align-items:center; }
+    .ao-row span:last-child { font-weight:600; text-align:right; }
+    .ao-promo { display:flex; justify-content:space-between; font-size:0.74rem; color:#059669; padding:5px 0 2px; }
+    .ao-total { display:flex; justify-content:space-between; font-size:0.84rem; font-weight:700; padding:5px 0; border-top:1.5px solid #c5dbd7; margin-top:2px; }
+    .ao-total span { color:#dc2626; }
+    .ao-btn { width:100%; margin-top:8px; padding:9px; background:linear-gradient(90deg,#0f766e,#059669); color:#fff; border:none; border-radius:8px; font-size:0.8rem; font-weight:700; cursor:pointer; font-family:inherit; }
+
+    /* Screen 2 â€“ QR payment */
+    .aq-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+    .aq-vietqr { font-weight:800; color:#0284c7; font-size:0.9rem; letter-spacing:0.02em; }
+    .aq-bank   { font-size:0.72rem; font-weight:700; color:#0369a1; background:#e0f2fe; padding:2px 8px; border-radius:999px; }
+    .aq-qr-wrap { background:#fff; border:1px solid #cce4e0; border-radius:10px; padding:8px; display:flex; justify-content:center; margin-bottom:7px; }
+    .aq-svg    { width:130px; height:130px; display:block; }
+    .aq-amount { text-align:center; font-weight:800; font-size:1.1rem; color:#dc2626; margin:4px 0 7px; }
+    .aq-info   { background:#f8fcfb; border-radius:8px; padding:6px 8px; border:1px solid #d0e8e4; }
+    .aq-irow   { display:flex; justify-content:space-between; font-size:0.72rem; padding:3px 0; color:#2c4a50; }
+    .aq-irow span:first-child { color:#6b8489; }
+    .aq-irow span:last-child  { font-weight:600; }
+    .aq-hint   { text-align:center; font-size:0.71rem; color:#0369a1; margin-top:6px; font-weight:600; }
+
+    /* Screen 3 â€“ App Banking */
+    .ab-section { margin-bottom:7px; }
+    .ab-lbl { font-size:0.68rem; color:#8fa3a8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; }
+    .ab-val { font-size:0.82rem; color:#1a2e31; }
+    .ab-val.fw7 { font-weight:700; }
+    .ab-val.sub { font-size:0.71rem; color:#6b8489; }
+    .ab-val.red { font-size:1.05rem; font-weight:800; color:#dc2626; }
+    .ab-val.grn { color:#059669; font-weight:600; }
+    .ab-divider { height:1px; background:#e4eef0; margin:7px 0; }
+    .ab-btn { width:100%; padding:10px; background:linear-gradient(90deg,#1d4ed8,#2563eb); color:#fff; border:none; border-radius:10px; font-size:0.79rem; font-weight:700; cursor:pointer; font-family:inherit; letter-spacing:0.03em; margin-top:4px; }
+    .ab-secure { text-align:center; font-size:0.69rem; color:#8fa3a8; margin-top:7px; }
   </style>
 </head>
 <body>
